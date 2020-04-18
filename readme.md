@@ -1,23 +1,17 @@
-Instalación
-Después de descargar el proyecto entramos a este.
+<h1> Movies </>
 
-  $ cd nombreRepositorio
-Ejecutamos el siguiente comando, instalamos el composer
 
-  $ composer install
--En caso contrario podemos instalar el composer de LARAVEL COLLECTIVE:
+<p> Bienvenido a la instalaicon del proyecto Movies, la siguiente es una descripcion de como instalarlo</p>
 
-  $ composer require "laravelcollective/html":"^5.3.0"
-Modificamos el nombre del archivo .env.example. por .env y agregamos nuestras credenciales. -OJO: Cuando subimos al repositorio o cuando en ocasiones se descarga el proyecto de laravel no contiene el .env , para eso seguimos la especificaciones de esta linea.
+<h2> Paso 1 </h2>
 
-Por ultimo solo debemos generar una key para nuestra app(Application Key)
+<p> Clonamos el proyecto desde el boton "Clone of download", en nuestra consola de github, y debemos entrar a la carpera del proyecto con el comando
+$ cd Movies
+</p>
 
-   $ php artisan key:generate
--Esto aumentara en el 'APP_KEY=' de nuestro .env
+<h2> Paso 2 </h2>
 
-Para migrar la base de datos (seleccionamos Mysql,Sqlite..etc), migramos.
+<p> Dentro de la carpeta del proyecto ejecutamos el siguiente comando, instalando el composer
 
-  $ php artisan migrate
-Listo ya podemos ejecutar el proyecto Cinema.
-
-  $ php artisan serve
+ $ composer install
+</p>
