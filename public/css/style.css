@@ -1,0 +1,78 @@
+                   /* Navegacion */
+ .logo-barra{
+  max-width: 30px;
+  max-height: 30px;
+ }
+ body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url(../images/fondo-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    background-attachment: fixed;
+    }
+  
+nav{
+    opacity: 0.8;
+    background: white;
+   }
+   .bg-light{
+      padding: 0;
+   }
+    /*--------------------FOOTER------------*/
+
+.social{
+   background-color:black;
+   opacity: 0.8;
+   color: white;
+   padding: 4rem 1rem;
+   padding: 0;
+}
+
+.a-iconos{
+   
+   text-decoration: none;
+   color: white;
+   font-size: 2rem;
+   padding: 1rem;
+   margin: 0.5rem;
+   border-radius: 50%;
+   border: 1px solid white;
+   
+   
+}
+
+.a-iconos i{
+   width: 40px;
+}
+.a-iconos:hover{
+   background-color: white;
+   color: #2C3E50;
+   border: 1px solid #2C3E50;
+   transition: all 1000ms ease;
+}
+.copyright{
+   color: white;
+   text-align: center;
+}
+.copyright span{
+   font-weight: bold;
+}
+.red-social, .contacto h3{
+   text-align: center;
+
+}
+
+@media (min-width: 768px){
+
+}
+.jumbotron{
+   margin: 200px;
+}
+    /*--------------------GRAL------------*/
+.cont{
+   padding: 20px;
+}
