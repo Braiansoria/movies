@@ -11,13 +11,29 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
+
+// Index(Peliculas random y agregadas), listado de peliculas,
 
 Route::get("/peliculas" , "PeliculasController@listado");
 
+// Detalle pelicula
+
+Route::get('/pelicula/{id}', 'PeliculasController@detalle');
+
+
+// Agregar película
+Route::get('/peliculas/agregar', function() { return view('sections.agregarPelicula'); });
+Route::post('peliculas/agregar', "PeliculasController@agregar");
+
+// Borrar pelicula
+Route::post('/borrarPelicula',"PeliculasController@borrar");
+
+
+// Actores y detalle
+
 Route::get("/actores" , "ActoresController@listado");
+
+
 
 

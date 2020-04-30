@@ -7,7 +7,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url(../images/fondo-home.jpg);
+    background-image: url(../images/sala-cine-pantalla-blanco-blanco-asientos_88188-75.jpg);
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -16,8 +17,7 @@
     }
   
 nav{
-    opacity: 0.8;
-    background: white;
+   background: white;
    }
    .bg-light{
       padding: 0;
@@ -75,4 +75,64 @@ nav{
     /*--------------------GRAL------------*/
 .cont{
    padding: 20px;
+}
+.__card-pelicula {
+   transition: all 0.2s ease-in-out;
+   color:black;
+}
+
+.__card-pelicula:hover {
+   box-shadow:
+       0 19px 38px rgba(0,0,0,0.17),
+       0 15px 12px rgba(0,0,0,0.09);
+}
+
+.__card-pelicula ul {
+   list-style-type: none;
+   padding: 0;
+}
+h4{
+   color:black;
+}
+.header {
+   color: #36A0FF;
+   font-size: 27px;
+   padding: 10px;
+}
+
+.bigicon {
+   font-size: 35px;
+   color: #36A0FF;
+}
+#agregar{
+   width: 500px;
+   margin: auto;
+   background-color:rgba(0,0,0,0.9);
+   margin-top: 20px;
+   margin-bottom: 5px;
+}
+
+.poster{
+max-width: 50%;
+   width: auto;
+}
+.detalle{
+   margin: auto; 
+   height: 100%
+   
+}
+.fotoDetalle{
+   max-width: 50%;
+}
+#detalles{
+   height: auto;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   background-color: white;
+   margin: auto;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.primero{
+   text-align: center;
 }
