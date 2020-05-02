@@ -16,8 +16,14 @@ class Pelicula extends Model
     }
     public function actores(){
         return $this->belongsToMany("App\Actor", "actor_movie", "movie_id","actor_id");
+    }
     
+    //Scope
 
+    public function scopeNmae($query, $pelicula){
+        if($pelicula)
+        return $query->where('pelicula','LIKE', "%%pelicula%%");
+    }
 }
     
 

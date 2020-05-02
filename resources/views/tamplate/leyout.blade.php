@@ -19,6 +19,7 @@
  
    @include('tamplate.nav')
 
+
 <main>
     @yield('principal')
 </main>

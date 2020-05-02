@@ -8,6 +8,7 @@ use App\Pelicula;
 
 class PeliculasController extends Controller
 {
+
     public function listado(){
       $peliculas = Pelicula::paginate(8);
 
@@ -63,5 +64,59 @@ class PeliculasController extends Controller
    $pelicula->delete();
    return redirect("/peliculas");
   }
-  
+  public function edit($id){
+    $unaPelicula = Pelicula::find($id);
+
+    $vac = compact("unaPelicula");
+
+    return view('editar', $vac);
   }
+  public function update(Request $request)
+    {
+        
+      $reglas = [
+        "title" => "string|min:2|unique:movies,title",
+        "rating" => "numeric|min:0|max:10",
+        "release_date" => "date|min:1",
+        "poster" => "file"
+    ];
+  
+    $mensajes = [
+        "string" => "El campo :attribute debe ser un texto",
+        "integer" => "El campo :attribute debe ser numérico",
+        "min" => "El campo :attribute tiene un mínimo de :min caracteres",
+        "unique" => "El campo :attribute ya existe"
+    ];
+        
+        $this->validate($request, $reglas, $mensajes);
+
+        $Pelicula = Pelicula::all($request->input('id'));
+        $Pelicula->title = $request->input('title');
+        $Pelicula->rating = $request->input('rating');
+        $Pelicula->release_date = $request->input('release_date');
+
+        $request->poster->move(store("public"), $imageName);
+        $Pelicuka->poster = $imageName; 
+
+        $Pelicula->save();
+        return redirect('/peliculas');
+    }
+     
+  
+
+  
+
+
+
+
+
+
+ // Api controller//
+
+public function listadoAPI(){
+  $peliculas = Pelicula::all();
+
+  return json_encode($peliculas);
+}
+
+}

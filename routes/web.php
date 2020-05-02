@@ -11,19 +11,22 @@
 |
 */
 
-
-
 // Index(Peliculas random y agregadas), listado de peliculas,
 
-Route::get("/peliculas" , "PeliculasController@listado");
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get("/peliculas", "PeliculasController@listado");
 
 // Detalle pelicula
 
 Route::get('/pelicula/{id}', 'PeliculasController@detalle');
 
-
 // Agregar película
 Route::get('/peliculas/agregar', function() { return view('sections.agregarPelicula'); });
+
 Route::post('peliculas/agregar', "PeliculasController@agregar");
 
 // Borrar pelicula
@@ -35,5 +38,7 @@ Route::post('/borrarPelicula',"PeliculasController@borrar");
 Route::get("/actores" , "ActoresController@listado");
 
 
+Route::view('/adminInicio', 'adminInicio')->middleware('auth', 'validarAdmin');
 
-
+Route::get('/editar/{id}', 'PeliculasController@edit');
+Route::post('/editar','PeliculasController@update');

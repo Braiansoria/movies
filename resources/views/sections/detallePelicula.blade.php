@@ -19,14 +19,14 @@
             {{ csrf_field() }}
         <input type="hidden" name="id" value="{{$unaPelicula->id}}">
         <input type="submit" value="Borra Pelicula">
+        <a href="/editar/{{$unaPelicula->id}}" class="btn btn-success" tabindex="-1" role="button">Editar</a>
         @if ($unaPelicula->genero)
          <p>Genero:{{$unaPelicula->genero->name}}</p>
          @endif
     </form>     
      </div>
     <div class="col-lg-4"> 
-    <h1>{{$unaPelicula->title}}</h1>
-    </div>
+   </div>
   
   </div>
 </section>
