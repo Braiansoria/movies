@@ -35,10 +35,6 @@ class PeliculasController extends Controller
 
     $peliculaNueva = new Pelicula();
     
-    $ruta=$req->file("poster")->store("public");
-    $nombreArchivo = basename($ruta);
-
-    $peliculaNueva->poster = $nombreArchivo;
     $peliculaNueva->title=$req['title'];
     $peliculaNueva->rating=$req['rating'];
     $peliculaNueva->release_date=$req['release_date'];
@@ -64,47 +60,21 @@ class PeliculasController extends Controller
    $pelicula->delete();
    return redirect("/peliculas");
   }
-  public function edit($id){
-    $unaPelicula = Pelicula::find($id);
+  public function inicio(){
+     $peliculas = Pelicula::where("title", 0)->inRandomOrder()->take(3)->get();
+     $vac=compact('peliculas');
 
-    $vac = compact("unaPelicula");
-
-    return view('editar', $vac);
-  }
-  public function update(Request $request)
-    {
-        
-      $reglas = [
-        "title" => "string|min:2|unique:movies,title",
-        "rating" => "numeric|min:0|max:10",
-        "release_date" => "date|min:1",
-        "poster" => "file"
-    ];
-  
-    $mensajes = [
-        "string" => "El campo :attribute debe ser un texto",
-        "integer" => "El campo :attribute debe ser numérico",
-        "min" => "El campo :attribute tiene un mínimo de :min caracteres",
-        "unique" => "El campo :attribute ya existe"
-    ];
-        
-        $this->validate($request, $reglas, $mensajes);
-
-        $Pelicula = Pelicula::all($request->input('id'));
-        $Pelicula->title = $request->input('title');
-        $Pelicula->rating = $request->input('rating');
-        $Pelicula->release_date = $request->input('release_date');
-
-        $request->poster->move(store("public"), $imageName);
-        $Pelicuka->poster = $imageName; 
-
-        $Pelicula->save();
-        return redirect('/peliculas');
-    }
-     
+      return view('/sections.partialRan',$vac);
+      }
   
 
-  
+
+
+
+
+
+
+
 
 
 

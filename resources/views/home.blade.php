@@ -5,27 +5,20 @@
     
 @endsection
 
+
 @section('principal')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                      
-                    <h2 class="w-100 text-center mt-5">¡{{ Auth::user()->name }}, bienvenide<h2>
 
 
 
-                </div>
-            </div>
-        </div>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1 class="display-4">Movies</h1>
+        <p class="lead">Bienvenide<br>
+            {{Auth::user()->name}}</p>
     </div>
-</div>
+  </div>
+
+
+
+
 @endsection

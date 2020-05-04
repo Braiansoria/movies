@@ -9,26 +9,23 @@
 
 @section('principal')
 <div class="container">
-<section class="container" id="detalles">
-<div class="row detalle"> 
-    <div class="col-lg-12 primero">
-        <img class="img-fluid fotoDetalle" src="/storage/{{ $unaPelicula->poster }}" alt="{{ $unaPelicula->title }}">
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1 class="display-4">{{$unaPelicula->title}}</h1>
         <p>Rating: {{ $unaPelicula->rating }}</p>
-        <p>Fecha de estreno: {{ $unaPelicula->release_date }}</p>  
-        <form class="" action="/borrarPelicula" method="POST">
+        <td>
+            <a href="/editar/{{$unaPelicula->id}}" class="btn btn-outline-secondary">
+                Modificar
+            </a>
+        </td>
+        <form action="/borrarPelicula" method="post">
             {{ csrf_field() }}
         <input type="hidden" name="id" value="{{$unaPelicula->id}}">
         <input type="submit" value="Borra Pelicula">
-        <a href="/editar/{{$unaPelicula->id}}" class="btn btn-success" tabindex="-1" role="button">Editar</a>
         @if ($unaPelicula->genero)
          <p>Genero:{{$unaPelicula->genero->name}}</p>
          @endif
-    </form>     
-     </div>
-    <div class="col-lg-4"> 
-   </div>
-  
-  </div>
-</section>
+        </div>
+      </div>
 </div>
-@endsection
+ 
+  @endsection

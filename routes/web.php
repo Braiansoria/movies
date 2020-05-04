@@ -15,6 +15,7 @@
 
 Auth::routes();
 
+Route::get('/',"PeliculasController@inicio");
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -40,5 +41,9 @@ Route::get("/actores" , "ActoresController@listado");
 
 Route::view('/adminInicio', 'adminInicio')->middleware('auth', 'validarAdmin');
 
-Route::get('/editar/{id}', 'PeliculasController@edit');
-Route::post('/editar','PeliculasController@update');
+Route::post('/editar','PeliculasController@actualizar');
+
+Route::get("/admin", "AdminController@index");
+
+
+Route::resource('admin/user',"AdminController");

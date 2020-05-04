@@ -38,10 +38,6 @@
                     <label for="__input-nombre">Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-release_date value="{{old("release_date")}}"" >
                 </div>           
-                <div class="form-group">
-                    <label for="__input-bandera">Cargar poster</label>
-                    <input type="file" name="poster" class="form-control-file" id="__input-pelicula">
-                </div> 
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar Pelicula</button>
             </form>
         </div>

@@ -22,9 +22,9 @@
                 </li>
              @endforeach
             </ul>
-        <form action="/editar" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="form-group mb-3">
+        <form action="/editar" method="POST" enctype="multipart/form-data">
+              @csrf
+            <div class="form-group mb-3">
                     <label for="__input-nombre">Titulo</label>
                 <input type="text" name="title" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-nombre" value="{{$unaPelicula->title}}" >
                 </div>
@@ -38,11 +38,7 @@
                     <label for="__input-nombre">Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('release_date') ? 'is-invalid' : '' }}" id="__input-nombre " value="{{$unaPelicula->release_date}}" >
                 </div>           
-                <div class="form-group">
-                    <label for="__input-bandera">Cargar poster</label>
-                    <input type="file" name="poster" class="form-control-file" id="__input-pelicula">
-                </div> 
-                    <button class="btn btn-primary btn-lg btn-block" type="submit"> Editar</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Actualizar Pelicula</button>
             </form>
         </div>
     </div>
