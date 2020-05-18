@@ -9,13 +9,16 @@ use App\Pelicula;
 class PeliculasController extends Controller
 {
 
-    public function listado(){
-      $peliculas = Pelicula::paginate(8);
+    public function listado(Request $request){
 
-        $vac = compact("peliculas");
+     $peliculas = Pelicula::paginate(5);
 
-        return view("sections.listadoPeliculas", $vac);
-    }
+     $vac = compact("peliculas");
+
+    return view("sections.listadoPeliculas", $vac);
+
+  }
+    
   public function agregar(Request $req){
     $reglas = [
       "title" => "string|min:2|unique:movies,title",
@@ -61,24 +64,39 @@ class PeliculasController extends Controller
    return redirect("/peliculas");
   }
   public function inicio(){
+
+
      $peliculas = Pelicula::where("title", 0)->inRandomOrder()->take(3)->get();
      $vac=compact('peliculas');
 
       return view('/sections.partialRan',$vac);
       }
   
+public function search(Request $Request){
+  $peliculas = Pelicula::where('title', 'like', '%'.$request->get('search').'%')
+                        ->paginate(8);
+  $vac = compact('peliculas');
+  return view("sections.listadoPeliculas",$vac);
+}
+public function edit($id){
+
+  $unaPelicula = Pelicula::find($id);
 
 
+  return view('editar', compact('unaPelicula','id'));
+}
+public function update(Request $request){
+  $unaPelicula = Pelicula::find($request->input('id'));
+  $unaPelicula->title = $request->input('title');
+  $unaPelicula->rating = $request->input('rating');
+  $unaPelicula->release_date = $request->input('release_date');
+  $unaPelicula->save();
 
 
+    return redirect('/peliculas');
 
-
-
-
-
-
-
-
+  
+  }
 
 
  // Api controller//

@@ -3,10 +3,7 @@
       <a class="navbar-brand" href="{{ url('/') }}">
         Movies
       </a>
-      <form class="navbar-form navbar-left pull-right" role="search">
-      <input class="form-control form-control-sm ml-3 w-75" name=search" type="text" placeholder="Search"
-        aria-label="Search">
-    </form>
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
       </button>

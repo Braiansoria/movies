@@ -17,8 +17,5 @@
             {{Auth::user()->name}}</p>
     </div>
   </div>
-
-
-
-
 @endsection
+

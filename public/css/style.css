@@ -23,54 +23,9 @@ nav{
       padding: 0;
    }
     /*--------------------FOOTER------------*/
-
-.social{
-   background-color:black;
-   opacity: 0.8;
-   color: white;
-   padding: 4rem 1rem;
-   padding: 0;
-}
-
-.a-iconos{
-   
-   text-decoration: none;
-   color: white;
-   font-size: 2rem;
-   padding: 1rem;
-   margin: 0.5rem;
-   border-radius: 50%;
-   border: 1px solid white;
-   
-   
-}
-
-.a-iconos i{
-   width: 40px;
-}
-.a-iconos:hover{
-   background-color: white;
-   color: #2C3E50;
-   border: 1px solid #2C3E50;
-   transition: all 1000ms ease;
-}
-.copyright{
-   color: white;
-   text-align: center;
-}
-.copyright span{
-   font-weight: bold;
-}
-.red-social, .contacto h3{
-   text-align: center;
-
-}
-
-@media (min-width: 768px){
-
-}
-.jumbotron{
-   margin: 200px;
+.footer{
+   height: 250px;
+   background-color: black;
 }
     /*--------------------GRAL------------*/
 .cont{

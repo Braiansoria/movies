@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class AdminController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.user.index');
+
+        $users = User::all();
+
+        $vac = compact('users');
+
+        return view('admin.user.index', $vac);
     }
 
 
@@ -46,7 +54,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +65,11 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userac = User::find($id);
+
+        $vac = compact('userac');
+
+        return view('admin.user.edit', $vac);
     }
 
     /**
@@ -70,6 +82,14 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $reglas =[
+            "nombre" => 'required|string|min:3',
+            'email' => 'required|email',
+        ];
+
+        $this->validate($request, $reglas);
+     
+     $usuario = User::find(Auth::user()->id);
     }
 
     /**
@@ -78,14 +98,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function borrar(Request $formulario ){
+        $id = $formulario['id'];
+     
+        $user = User::find($id);
+
+        $user->delete();
+     
+        return redirect("/admin/index");
     }
 
-    public function __construct(){
-     
-        $this->middleware('EsAdmin');
-   
-    }
+
 }

@@ -22,23 +22,24 @@
                 </li>
              @endforeach
             </ul>
-        <form action="/editar" method="POST" enctype="multipart/form-data">
-              @csrf
+        <form action="/editar" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{$unaPelicula->id}}">
             <div class="form-group mb-3">
-                    <label for="__input-nombre">Titulo</label>
-                <input type="text" name="title" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-nombre" value="{{$unaPelicula->title}}" >
+                    <label>Titulo</label>
+                <input type="text" name="title" class="form-control" value="{{$unaPelicula->title}}" >
                 </div>
                 
                 <div class="form-group mb-3">
-                    <label for="__input-poblacion">Rating</label>
-                    <input type="text" name="rating" class="form-control  {{ null!=$errors->first('rating') ? 'is-invalid' : '' }}"id="__input-poblacion" value="{{$unaPelicula->rating}}" >
+                    <label>Rating</label>
+                    <input type="text" name="rating" class="form-control" value="{{$unaPelicula->rating}}" >
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="__input-nombre">Fecha de estreno</label>
-                    <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('release_date') ? 'is-invalid' : '' }}" id="__input-nombre " value="{{$unaPelicula->release_date}}" >
-                </div>           
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Actualizar Pelicula</button>
+                    <label >Fecha de estreno</label>
+                    <input type="date" name="release_date" class="form-control" value="{{$unaPelicula->release_date}}" >
+                </div>          
+                <button class="btn btn-primary btn-lg btn-block">Actualizar</button>
             </form>
         </div>
     </div>
