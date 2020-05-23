@@ -11,6 +11,9 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid text-center">
         <h1 class="display-4">{{$unaPelicula->title}}</h1>
+        <div>
+        <img src="/storage/{{$unaPelicula->poster}}" alt="">
+        </div>
         <p>Rating: {{ $unaPelicula->rating }}</p>
         <td>
             <a href="/editar/{{$unaPelicula->id}}" class="btn btn-primary">

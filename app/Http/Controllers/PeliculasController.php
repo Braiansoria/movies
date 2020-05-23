@@ -18,34 +18,43 @@ class PeliculasController extends Controller
     return view("sections.listadoPeliculas", $vac);
 
   }
+
     
   public function agregar(Request $req){
     $reglas = [
-      "title" => "string|min:2|unique:movies,title",
-      "rating" => "numeric|min:0|max:10",
-      "release_date" => "date|min:1",
-      "poster" => "file"
+      "title" => "required|string|min:2|unique:movies,title",
+      "rating" => "required|numeric|min:0|max:10",
+      "release_date" => "date|min:1|required",
+      "poster" => "file|required"
   ];
 
   $mensajes = [
       "string" => "El campo :attribute debe ser un texto",
       "integer" => "El campo :attribute debe ser numérico",
       "min" => "El campo :attribute tiene un mínimo de :min caracteres",
-      "unique" => "El campo :attribute ya existe"
+      "unique" => "El campo :attribute ya existe",
+      "required" => "El campo :attribute es obligatorio"
+
   ];
 
   $this->validate($req, $reglas,$mensajes);
 
     $peliculaNueva = new Pelicula();
+
+    $ruta = $req->file('poster')->store("public");
+    $nombreArchivo = basename($ruta);
     
-    $peliculaNueva->title=$req['title'];
+    $peliculaNueva->title = $req['title'];
     $peliculaNueva->rating=$req['rating'];
     $peliculaNueva->release_date=$req['release_date'];
+    $peliculaNueva->poster=$nombreArchivo;
       
     $peliculaNueva->save();
 
     return redirect("/peliculas");
+
   }
+  
 
   public function detalle($id)
   {
@@ -73,7 +82,7 @@ class PeliculasController extends Controller
       }
   
 public function search(Request $Request){
-  $peliculas = Pelicula::where('title', 'like', '%'.$request->get('search').'%')
+  $peliculas = Pelicula::where('title', 'like', '%'.$Request->get('search').'%')
                         ->paginate(8);
   $vac = compact('peliculas');
   return view("sections.listadoPeliculas",$vac);
@@ -86,17 +95,47 @@ public function edit($id){
   return view('editar', compact('unaPelicula','id'));
 }
 public function update(Request $request){
+
+  $reglas = [
+    "title" => "required|string|min:2",
+    "rating" => "numeric|min:0|max:10",
+    "release_date" => "required|date|min:1",
+    "poster" => "required"
+
+];
+
+$mensajes = [
+    "string" => "El campo :attribute debe ser un texto",
+    "integer" => "El campo :attribute debe ser numérico",
+    "min" => "El campo :attribute tiene un mínimo de :min caracteres",
+    "unique" => "El campo :attribute ya existe",
+    "required" => "El campo :attribute es obligatorio"
+
+];
+
+$this->validate($request, $reglas,$mensajes);
+
   $unaPelicula = Pelicula::find($request->input('id'));
   $unaPelicula->title = $request->input('title');
   $unaPelicula->rating = $request->input('rating');
   $unaPelicula->release_date = $request->input('release_date');
+  
+  $ruta = $request->file('poster')->store("public");
+  $nombreArchivo = basename($ruta);
+
+  $unaPelicula->poster = $nombreArchivo; 
+
   $unaPelicula->save();
 
 
-    return redirect('/peliculas');
-
-  
+   return redirect('/peliculas');
   }
+
+
+
+
+
+
 
 
  // Api controller//

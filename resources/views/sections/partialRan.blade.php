@@ -16,7 +16,7 @@
     
     <ul class="list-group">
         @forelse ($peliculas as $pelicula)
-    <li class="list-group-item"><a href="/pelicula/{{$pelicula->id}}">{{$pelicula->title}}</a> </li>
+    <li class="list-group-item"><a href="/peliculas/{{$pelicula->id}}">{{$pelicula->title}}</a> </li>
         @empty
         <p>No hay actor</p>
       @endforelse

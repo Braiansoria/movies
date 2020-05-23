@@ -20,7 +20,7 @@
    @include('tamplate.nav')
 
 
-<main>
+<main class="main">
     @yield('principal')
 </main>
 

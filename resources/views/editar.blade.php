@@ -22,7 +22,7 @@
                 </li>
              @endforeach
             </ul>
-        <form action="/editar" method="post">
+        <form action="/editar" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{$unaPelicula->id}}">
             <div class="form-group mb-3">
@@ -38,7 +38,10 @@
                 <div class="form-group mb-3">
                     <label >Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control" value="{{$unaPelicula->release_date}}" >
-                </div>          
+                </div>         
+                <div class="form-group mb-3">
+                    <label >Imagen</label>
+                    <input type="file" name="poster" class="form-control" value="{{$unaPelicula->poster}}" >
                 <button class="btn btn-primary btn-lg btn-block">Actualizar</button>
             </form>
         </div>

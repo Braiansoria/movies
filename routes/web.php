@@ -27,9 +27,10 @@ Route::get("/search", "PeliculasController@search");
 Route::get('/peliculas/{id}', 'PeliculasController@detalle');
 
 // Agregar película
-Route::get('/peliculas/agregar', function() { return view('sections.agregarPelicula'); });
 
-Route::post('peliculas/agregar', "PeliculasController@agregar");
+Route::post('/agregarPelicula', "PeliculasController@agregar");
+
+Route::get('/agregarPelicula', function() { return view('sections.agregarPelicula'); });
 
 // Borrar y Editar pelicula  
 Route::post('/borrarPelicula',"PeliculasController@borrar");

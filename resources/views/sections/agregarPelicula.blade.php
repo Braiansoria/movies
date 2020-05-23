@@ -22,7 +22,7 @@
                 </li>
              @endforeach
             </ul>
-            <form method="post" action="/peliculas/agregar" enctype="multipart/form-data">
+            <form method="post" action="/agregarPelicula" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group mb-3">
                     <label for="__input-nombre">Titulos</label>
@@ -37,7 +37,12 @@
                 <div class="form-group mb-3">
                     <label for="__input-nombre">Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-release_date value="{{old("release_date")}}"" >
-                </div>           
+                </div>  
+                <div class="form-group mb-3">
+                    <label for="poster">Foto
+                        <input type="file" name="poster" class="form-control">
+                    </label>
+                </div>         
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar Pelicula</button>
             </form>
         </div>
