@@ -13,6 +13,6 @@ class ActoresController extends Controller
 
         $vac = compact("actores");
 
-        return view("sections.listadoActores", $vac);
+        return view('sections.detallePelicula', $vac);
     }
 }

@@ -34,6 +34,10 @@
                     <label>Rating</label>
                     <input type="text" name="rating" class="form-control" value="{{$unaPelicula->rating}}" >
                 </div>
+                <div class="form-group mb-3">
+                    <label>Detalle de pelicula</label>
+                    <input type="text" name="comentario" class="form-control" value="{{$unaPelicula->comentarios}}" >
+                </div>
 
                 <div class="form-group mb-3">
                     <label >Fecha de estreno</label>
