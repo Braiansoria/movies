@@ -136,6 +136,18 @@ $this->validate($request, $reglas,$mensajes);
 
 
 
+// Controlladores admin//
+
+
+
+public function all(Request $request){
+
+  $peliculas = Pelicula::paginate(5);
+
+  $vac = compact("peliculas");
+
+ return view("sections.listado", $vac);
+}
 
 
 

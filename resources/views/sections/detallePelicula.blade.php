@@ -23,6 +23,12 @@
         @if ($unaPelicula->genero)
         <p>Genero:{{$unaPelicula->genero->name}}</p>
         @endif
+        @foreach ($unaPelicula->actores as $actor)
+        <small>
+        <li>{{$actor->getNombreCompleto()}}
+        </small>
+        </li>
+        @endforeach
        </td>
        
         <td>

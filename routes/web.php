@@ -53,3 +53,6 @@ Route::get('/borrarUser/{id}',"AdminController@borrar")->middleware('auth', 'EsA
 
 Route::post('/borrarUser',"AdminController@borrar")->middleware('auth', 'EsAdmin');
 
+Route::get('/listado',"PeliculasController@all")->middleware('auth', 'EsAdmin');
+
+
