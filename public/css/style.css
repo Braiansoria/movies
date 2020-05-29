@@ -4,8 +4,7 @@
   max-height: 30px;
  }
  body{
-    margin: 0;
-    padding: 0;
+   
     box-sizing: border-box;
     background-image: url(../images/sala-cine-pantalla-blanco-blanco-asientos_88188-75.jpg);
     background-color: black;
@@ -130,6 +129,27 @@ max-width: 35%;
    text-align: center;
 }
 .main{
-padding-bottom:300px ;
-padding-top: 30 px;
+padding-bottom:100px ;
+padding-top: 40 px;
+}
+.detalle{
+   width: 25%;
+}
+.paginate{
+   background-color: white;
+   padding: 30px;
+}
+.caja{
+   background-color: white;
+   margin: 20px;
+}
+.descripcion{
+   font-size: 15px;
+   font-weight:none ;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   background-color: white;
+   padding: 10px;
+}
+.detalles{
+   margin-top: 30px;
 }

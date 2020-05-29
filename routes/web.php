@@ -19,25 +19,25 @@ Route::get('/',"PeliculasController@inicio");
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get("/peliculas", "PeliculasController@listado");
+Route::get("/peliculas", "PeliculasController@listado")->middleware('auth');
 
-Route::get("/search", "PeliculasController@search");
+Route::get("/search", "PeliculasController@search")->middleware('auth');
 // Detalle pelicula
 
-Route::get('/peliculas/{id}', 'PeliculasController@detalle');
+Route::get('/peliculas/{id}', 'PeliculasController@detalle')->middleware('auth');
 
 // Agregar película
 
-Route::post('/agregarPelicula', "PeliculasController@agregar");
+Route::post('/agregarPelicula', "PeliculasController@agregar")->middleware('auth', 'EsAdmin');
 
 Route::get('/agregarPelicula', function() { return view('sections.agregarPelicula'); });
 
 // Borrar y Editar pelicula  
 Route::post('/borrarPelicula',"PeliculasController@borrar");
 
-Route::get('/editar/{id}', 'PeliculasController@edit');
+Route::get('/editar/{id}', 'PeliculasController@edit')->middleware('auth', 'EsAdmin');
 
-Route::post('/editar', 'PeliculasController@update');
+Route::post('/editar', 'PeliculasController@update')->middleware('auth', 'EsAdmin');
 
 //  
 
@@ -54,5 +54,8 @@ Route::get('/borrarUser/{id}',"AdminController@borrar")->middleware('auth', 'EsA
 Route::post('/borrarUser',"AdminController@borrar")->middleware('auth', 'EsAdmin');
 
 Route::get('/listado',"PeliculasController@all")->middleware('auth', 'EsAdmin');
+
+Route::get('/detalle/{id}',"PeliculasController@edicion")->middleware('auth', 'EsAdmin');
+
 
 

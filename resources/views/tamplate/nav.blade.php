@@ -8,17 +8,17 @@
           <span class="navbar-toggler-icon"></span>
       </button>
       
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           </ul>
           <ul class="navbar-nav ml-auto">
               @guest
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  <li class="nav-item text-center">
+                      <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresa') }}</a>
                   </li>
                   @if (Route::has('register'))
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                          <a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                       </li>
                   @endif
               @else
@@ -31,7 +31,7 @@
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
+                              {{ __('Salir') }}
                           </a>
 
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

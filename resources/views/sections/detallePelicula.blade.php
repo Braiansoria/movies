@@ -1,4 +1,7 @@
 
+@section('principal')
+
+
 @extends('tamplate.leyout')
 
 @section('css')
@@ -9,16 +12,14 @@
 
 @section('principal')
 <div class="container">
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center detalles">
         <h1 class="display-4">{{$unaPelicula->title}}</h1>
         <div>
-        <img src="/storage/{{$unaPelicula->poster}}" alt="">
+        <img class="detalle" src="/storage/{{$unaPelicula->poster}}" alt="" >
         </div>
         <h3> Detalle de la pelicula
-        <small class="form-control contrainer fluid" rows="3" >{{$unaPelicula->comentarios}}
-        </small>
+        <p  class="text-justify descripcion"> {{$unaPelicula->comentarios}}</p>
        </h3>
-       <td>
         <p>Rating: {{ $unaPelicula->rating }}</p>
         @if ($unaPelicula->genero)
         <p>Genero:{{$unaPelicula->genero->name}}</p>
@@ -29,21 +30,12 @@
         </small>
         </li>
         @endforeach
-       </td>
-       
-        <td>
-            <a href="/editar/{{$unaPelicula->id}}" class="btn btn-primary">
-                <button type="submit" class="btn btn-success">Editar</button>
-            </a>
-        </td>
-        <form action="/borrarPelicula" method="post">
-            {{ csrf_field() }}
-        <input type="hidden" name="id" value="{{$unaPelicula->id}}">
-        <input type="submit" value="Borra Pelicula">
-        </div>
-      </div>
+    </div>
 </div>
 
 
  
   @endsection
+
+
+@endsection

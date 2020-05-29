@@ -11,7 +11,7 @@ class PeliculasController extends Controller
 
     public function listado(Request $request){
 
-     $peliculas = Pelicula::paginate(5);
+     $peliculas = Pelicula::paginate(6);
 
      $vac = compact("peliculas");
 
@@ -25,7 +25,9 @@ class PeliculasController extends Controller
       "title" => "required|string|min:2|unique:movies,title",
       "rating" => "required|numeric|min:0|max:10",
       "release_date" => "date|min:1|required",
-      "poster" => "file|required"
+      "poster" => "file|required",
+      "comentarios" => "required|min:50",
+
   ];
 
   $mensajes = [
@@ -131,7 +133,7 @@ $this->validate($request, $reglas,$mensajes);
   $unaPelicula->save();
 
 
-   return redirect('/peliculas');
+   return redirect('/listado');
   }
 
 
@@ -148,9 +150,15 @@ public function all(Request $request){
 
  return view("sections.listado", $vac);
 }
+public function edicion($id)
+  {
+    $unaPelicula = Pelicula::find($id);
 
+    $vac = compact("unaPelicula");
 
+    return view('sections.detalle', $vac);
 
+  }
 
 
  // Api controller//

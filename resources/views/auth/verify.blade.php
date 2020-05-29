@@ -1,8 +1,13 @@
-@extends('layouts.app')
+@extends('tamplate.leyout')
 
-@section('content')
+@section('css')
+    {{ asset('css/style.css') }}
+    
+@endsection
+
+@section('principal')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top:30px;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Verify Your Email Address') }}</div>
