@@ -31,13 +31,10 @@
    <h2 class="mt-5 w-100 text-center">¡No se encontraron peliculas!</h2>
   @endforelse
   </div>
-  
   </div>
   
-      </div>
+</div>
+</div>
 
-      <div>
-          
-      </div>
     
 @endsection    

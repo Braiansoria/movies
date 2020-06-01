@@ -25,12 +25,12 @@
             <form method="post" action="/agregarPelicula" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group mb-3">
-                    <label for="__input-nombre">Titulos</label>
+                    <label>Titulos</label>
                 <input type="text" name="title" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-nombre" value="{{old("title")}}" >
                 </div>
                 
                 <div class="form-group mb-3">
-                    <label for="__input-poblacion">Rating</label>
+                    <label >Rating</label>
                     <input type="text" name="rating" class="form-control  {{ null!=$errors->first('rating') ? 'is-invalid' : '' }}" id="__input-rating" placeholder="" value="{{old("rating")}}">
                 </div>
 
@@ -39,8 +39,8 @@
                     <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-release_date value="{{old("release_date")}}"" >
                 </div>  
                 <div class="form-group mb-3">
-                    <label for="__input-nombre">Detalle de una pelicula</label>
-                    <input type="comentario" name="detalle" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-release_date value="{{old("release_date")}}"" >
+                    <label >Detalle de una pelicula</label>
+                    <textarea name="comentarios" cols="30" rows="10" class="form-control" value="{{old('comentario')}}" placeholder="Agrega una descripción "> </textarea>
                 </div>  
                 <div class="form-group mb-3">
                     <label for="poster">Foto

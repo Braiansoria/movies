@@ -49,7 +49,7 @@ class PeliculasController extends Controller
     $peliculaNueva->title = $req['title'];
     $peliculaNueva->rating=$req['rating'];
     $peliculaNueva->release_date=$req['release_date'];
-    $peliculaNueva->comentarios=$req['comentario'];
+    $peliculaNueva->comentarios=$req['comentarios'];
 
     $peliculaNueva->poster=$nombreArchivo;
       
@@ -123,7 +123,7 @@ $this->validate($request, $reglas,$mensajes);
   $unaPelicula->title = $request->input('title');
   $unaPelicula->rating = $request->input('rating');
   $unaPelicula->release_date = $request->input('release_date');
-  $unaPelicula->comentarios=$request['comentario'];
+  $unaPelicula->comentarios=$request['comentarios'];
   
   $ruta = $request->file('poster')->store("public");
   $nombreArchivo = basename($ruta);

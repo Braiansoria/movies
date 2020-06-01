@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::all();
+        $users = User::paginate(5);
 
         $vac = compact('users');
 

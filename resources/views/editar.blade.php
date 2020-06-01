@@ -32,20 +32,20 @@
                 
                 <div class="form-group mb-3">
                     <label>Rating</label>
-                    <input type="text" name="rating" class="form-control" value="{{$unaPelicula->rating}}" >
+                    <input type="number" name="rating" class="form-control" value="{{$unaPelicula->rating}}" >
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group mb-8">
                     <label>Detalle de pelicula</label>
-                    <input type="text" name="comentario" class="form-control" value="{{$unaPelicula->comentarios}}" >
+                    <textarea name="comentarios" cols="30" rows="10" class="form-control" value="{{$unaPelicula->comentarios}}"></textarea>
                 </div>
 
                 <div class="form-group mb-3">
                     <label >Fecha de estreno</label>
-                    <input type="date" name="release_date" class="form-control" value="{{$unaPelicula->release_date}}" >
+                    <input type="date" name="release_date" class="form-control" value="{{old('release_date',$unaPelicula->release_date)}}" >
                 </div>         
                 <div class="form-group mb-3">
                     <label >Imagen</label>
-                    <input type="file" name="poster" class="form-control" value="{{$unaPelicula->poster}}" >
+                    <input type="file" name="poster" class="form-control" value ="{{old('poster',$unaPelicula->poster)}}" >
                 <button class="btn btn-primary btn-lg btn-block">Actualizar</button>
             </form>
         </div>

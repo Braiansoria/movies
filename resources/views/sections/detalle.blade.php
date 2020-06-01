@@ -15,9 +15,8 @@
         <img src="/storage/{{$unaPelicula->poster}}" alt="">
         </div>
         <h3> Detalle de la pelicula
-        <small class="form-control contrainer fluid" rows="3" >{{$unaPelicula->comentarios}}
-        </small>
-       </h3>
+            <p  class="text-justify descripcion" style="margin: 30px"> {{$unaPelicula->comentarios}}</p>
+        </h3>
        <td>
         <p>Rating: {{ $unaPelicula->rating }}</p>
         @if ($unaPelicula->genero)
@@ -31,11 +30,8 @@
         @endforeach
        </td>
        <div>
-         <button type="submit" class="btn btn-success text-white"><a href="/editar/{{$unaPelicula->id}}">Editar</a>
+         <button type="submit" class="btn btn-success"><a class="text-white" href="/editar/{{$unaPelicula->id}}">Editar</a>
         </button>
-        <button type="submit" class="btn btn-success">
-        <a href="/agregarPelicula">Agregar pelicula</a></button>
-        
         <form action="/borrarPelicula" method="post">
             {{ csrf_field() }}
         <input type="hidden" name="id" value="{{$unaPelicula->id}}">

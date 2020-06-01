@@ -18,7 +18,7 @@
         <img class="detalle" src="/storage/{{$unaPelicula->poster}}" alt="" >
         </div>
         <h3> Detalle de la pelicula
-        <p  class="text-justify descripcion"> {{$unaPelicula->comentarios}}</p>
+        <p  class="text-justify descripcion" style="margin: 30px"> {{$unaPelicula->comentarios}}</p>
        </h3>
         <p>Rating: {{ $unaPelicula->rating }}</p>
         @if ($unaPelicula->genero)
