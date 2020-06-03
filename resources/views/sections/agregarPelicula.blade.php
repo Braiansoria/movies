@@ -15,39 +15,42 @@
     
     <div class="row ">
         <div class="col-md-8 offset-md-2 order-md-1">
-            <ul class="errores">
-             @foreach ($errors->all() as $error)
-                <li>
-                 {{$error}}
-                </li>
-             @endforeach
-            </ul>
+            
             <form method="post" action="/agregarPelicula" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group mb-3">
                     <label>Titulos</label>
                 <input type="text" name="title" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-nombre" value="{{old("title")}}" >
+                <span id="span-nombre" class="form-text text-danger invalid-fedback">{{$errors->first('title')}}</span>
                 </div>
                 
                 <div class="form-group mb-3">
                     <label >Rating</label>
-                    <input type="text" name="rating" class="form-control  {{ null!=$errors->first('rating') ? 'is-invalid' : '' }}" id="__input-rating" placeholder="" value="{{old("rating")}}">
+                    <input type="number" name="rating" class="form-control  {{ null!=$errors->first('rating') ? 'is-invalid' : '' }}" id="__input-rating" placeholder="" value="{{old("rating")}}">
+                    <span id="span-nombre" class="form-text text-danger invalid-fedback">{{$errors->first('rating')}}</span>
+
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="__input-nombre">Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control  {{ null!=$errors->first('title') ? 'is-invalid' : '' }}" id="__input-release_date value="{{old("release_date")}}"" >
+                    <span id="span-nombre" class="form-text text-danger invalid-fedback">{{$errors->first('release_date')}}</span>
+
                 </div>  
                 <div class="form-group mb-3">
                     <label >Detalle de una pelicula</label>
                     <textarea name="comentarios" cols="30" rows="10" class="form-control" value="{{old('comentario')}}" placeholder="Agrega una descripción "> </textarea>
+                    <span id="span-nombre" class="form-text text-danger invalid-fedback">{{$errors->first('comentarios')}}</span>
                 </div>  
                 <div class="form-group mb-3">
                     <label for="poster">Foto
                         <input type="file" name="poster" class="form-control">
+                        <span id="span-nombre" class="form-text text-danger invalid-fedback">{{$errors->first('poster')}}</span>
                     </label>
-                </div>         
+                </div>   
+                <div style="padding: 15px">     
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar Pelicula</button>
+                </div> 
             </form>
         </div>
     </div>

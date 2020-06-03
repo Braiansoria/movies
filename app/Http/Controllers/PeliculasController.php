@@ -23,19 +23,22 @@ class PeliculasController extends Controller
   public function agregar(Request $req){
     $reglas = [
       "title" => "required|string|min:2|unique:movies,title",
-      "rating" => "required|numeric|min:0|max:10",
+      "rating" => "required|integer|min:0|max:10",
       "release_date" => "date|min:1|required",
-      "poster" => "file|required",
-      "comentarios" => "required|min:50",
+      "poster" => "required|image|mimes:jpeg,jpg,png,svg,bmp,webp",
+      "comentarios" => "required|min:50"
 
   ];
 
   $mensajes = [
-      "string" => "El campo :attribute debe ser un texto",
-      "integer" => "El campo :attribute debe ser numérico",
-      "min" => "El campo :attribute tiene un mínimo de :min caracteres",
-      "unique" => "El campo :attribute ya existe",
-      "required" => "El campo :attribute es obligatorio"
+      "string" => "El campo  debe ser un texto",
+      "integer" => "El campo  debe ser numérico",
+      "min" => "El campo  tiene un mínimo de :min caracteres",
+      "unique" => "El campo  ya existe",
+      "required" => "El campo no puede estar vacio",
+      "image"=> "El campo no es un imagen",
+      "mimes" => "El archivo tiene que ser jpeg, jpg, png, svg, bmp o webp",
+      "date" => "El campo debe ser una fecha"      
 
   ];
 
@@ -79,8 +82,9 @@ class PeliculasController extends Controller
   public function inicio(){
 
 
-     $peliculas = Pelicula::where("title", 0)->inRandomOrder()->take(3)->get();
-     $vac=compact('peliculas');
+     $peliculas = Pelicula::where("title", 0)->inRandomOrder()->take(6)->get();
+     $movies = Pelicula::where("title", 0)->first()->take(6)->get();
+     $vac=compact('peliculas','movies');
 
       return view('/sections.partialRan',$vac);
       }
@@ -88,12 +92,14 @@ class PeliculasController extends Controller
 public function search(Request $Request){
   $peliculas = Pelicula::where('title', 'like', '%'.$Request->get('search').'%')
                         ->paginate(8);
+
   $vac = compact('peliculas');
   return view("sections.listadoPeliculas",$vac);
 }
 public function edit($id){
 
-  $unaPelicula = Pelicula::find($id);
+  $unaPelicula = Pelicula::find($id
+  );
 
 
   return view('editar', compact('unaPelicula','id'));
@@ -101,19 +107,24 @@ public function edit($id){
 public function update(Request $request){
 
   $reglas = [
-    "title" => "required|string|min:2",
-    "rating" => "numeric|min:0|max:10",
-    "release_date" => "required|date|min:1",
-    "poster" => "required"
+    "title" => "required|string|min:2|unique:movies,title",
+    "rating" => "required|integer|min:0|max:10",
+    "release_date" => "date|min:1|required",
+    "poster" => "required|image|mimes:jpeg,jpg,png,svg,bmp,webp",
+    "comentarios" => "required|min:50"
 
 ];
 
 $mensajes = [
-    "string" => "El campo :attribute debe ser un texto",
-    "integer" => "El campo :attribute debe ser numérico",
-    "min" => "El campo :attribute tiene un mínimo de :min caracteres",
-    "unique" => "El campo :attribute ya existe",
-    "required" => "El campo :attribute es obligatorio"
+  "string" => "El campo  debe ser un texto",
+  "integer" => "El campo  debe ser numérico",
+  "min" => "El campo  tiene un mínimo de :min caracteres",
+  "unique" => "El campo  ya existe",
+  "required" => "El campo no puede estar vacio",
+  "image"=> "El campo no es un imagen",
+  "mimes" => "El archivo tiene que ser jpeg, jpg, png, svg, bmp o webp",
+  "date" => "El campo debe ser una fecha"      
+
 
 ];
 
