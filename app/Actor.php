@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Actor extends Model
 {
+    public $table = "actors";
+    public $timestamp = "false";
     public $guarded = [];
 
     public function getNombreCompleto(){

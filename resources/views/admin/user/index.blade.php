@@ -31,9 +31,6 @@
         <td>{{$user->name}}</td>
         <td>{{$user->id}}</td>
         <td>
-        <a href="/admin/edit/{{$user->id}}" class="btn btn-warning">Editar</a>
-        </td>
-        <td>
             <form action="/borrarUser" method="post">
             {{ csrf_field() }}
         <input type="hidden" name="id" value="{{$user->id}}">

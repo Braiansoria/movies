@@ -42,7 +42,21 @@
                 <div class="form-group mb-3">
                     <label >Fecha de estreno</label>
                     <input type="date" name="release_date" class="form-control" value="{{old('release_date',$unaPelicula->release_date)}}" >
-                </div>         
+                </div>  
+                <div class="form-group">
+                    <label for="provincia">Generos</label>
+                        <select class="form-control {{ null!=$errors->first('genero') ? 'is-invalid' : '' }}" name="genero">
+                            <option value="">Eliege el genero</option>
+                            @foreach ($movies as $pelicula)
+                            @if ($pelicula->genero)
+                            <option value="{{$pelicula->genre_id}}">
+                                {{$pelicula->genero->name}}
+                            @endif
+                            @endforeach
+                            </select>
+                        <span  class="form-text text-danger">{{$errors->first('genero')}}</span>
+                    </div>   
+                    actor    
                 <div class="form-group mb-3">
                     <label >Imagen</label>
                     <input type="file" name="poster" class="form-control" value ="{{old('poster',$unaPelicula->poster)}}" >

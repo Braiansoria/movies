@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Genero extends Model
 {
     public $table = "genres";
+    public $timestamps = "false";
     public $guarded = [];
 
     public function pelicula() {

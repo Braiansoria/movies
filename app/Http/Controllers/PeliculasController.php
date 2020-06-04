@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Pelicula;
 
+use App\Actor;
+
+
 class PeliculasController extends Controller
 {
 
@@ -18,15 +21,24 @@ class PeliculasController extends Controller
     return view("sections.listadoPeliculas", $vac);
 
   }
+public function create(){
+       $peliculas = Pelicula::all();
+
+        $vac = compact('peliculas');
+
+        return view('sections.agregarPelicula', $vac);
+    }
 
     
   public function agregar(Request $req){
     $reglas = [
       "title" => "required|string|min:2|unique:movies,title",
-      "rating" => "required|integer|min:0|max:10",
+      "rating" => "required|min:0|max:10",
       "release_date" => "date|min:1|required",
       "poster" => "required|image|mimes:jpeg,jpg,png,svg,bmp,webp",
-      "comentarios" => "required|min:50"
+      "comentarios" => "required|min:50",
+      "genero" => "required"
+
 
   ];
 
@@ -56,6 +68,11 @@ class PeliculasController extends Controller
 
     $peliculaNueva->poster=$nombreArchivo;
       
+    $peliculaNueva->genre_id = (int)$req["genero"];
+
+    $peliculaNueva->actor_movie = (int)$req["actor"];
+
+    dd($peliculaNueva);
     $peliculaNueva->save();
 
     return redirect("/peliculas");
@@ -98,11 +115,10 @@ public function search(Request $Request){
 }
 public function edit($id){
 
-  $unaPelicula = Pelicula::find($id
-  );
+  $unaPelicula = Pelicula::find($id);
+  $movies = Pelicula::all();
 
-
-  return view('editar', compact('unaPelicula','id'));
+  return view('editar', compact('movies','unaPelicula','id'));
 }
 public function update(Request $request){
 
@@ -111,7 +127,9 @@ public function update(Request $request){
     "rating" => "required|integer|min:0|max:10",
     "release_date" => "date|min:1|required",
     "poster" => "required|image|mimes:jpeg,jpg,png,svg,bmp,webp",
-    "comentarios" => "required|min:50"
+    "comentarios" => "required|min:50",
+    "genero" => "required"
+
 
 ];
 
@@ -123,7 +141,8 @@ $mensajes = [
   "required" => "El campo no puede estar vacio",
   "image"=> "El campo no es un imagen",
   "mimes" => "El archivo tiene que ser jpeg, jpg, png, svg, bmp o webp",
-  "date" => "El campo debe ser una fecha"      
+  "date" => "El campo debe ser una fecha" ,
+     
 
 
 ];
@@ -141,6 +160,8 @@ $this->validate($request, $reglas,$mensajes);
 
   $unaPelicula->poster = $nombreArchivo; 
 
+  $unaPelicula->genre_id = (int)$request["genero"];
+  
   $unaPelicula->save();
 
 

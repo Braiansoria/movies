@@ -30,7 +30,7 @@ Route::get('/peliculas/{id}', 'PeliculasController@detalle')->middleware('auth')
 
 Route::post('/agregarPelicula', "PeliculasController@agregar")->middleware('auth', 'EsAdmin');
 
-Route::get('/agregarPelicula', function() { return view('sections.agregarPelicula'); });
+Route::get('/agregarPelicula', "PeliculasController@create")->middleware('auth', 'EsAdmin');
 
 // Borrar y Editar pelicula  
 Route::post('/borrarPelicula',"PeliculasController@borrar");
