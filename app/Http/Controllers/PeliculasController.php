@@ -123,8 +123,8 @@ public function edit($id){
 public function update(Request $request){
 
   $reglas = [
-    "title" => "required|string|min:2|unique:movies,title",
-    "rating" => "required|integer|min:0|max:10",
+    "title" => "required|string|min:2",
+    "rating" => "required|min:0|max:10",
     "release_date" => "date|min:1|required",
     "poster" => "required|image|mimes:jpeg,jpg,png,svg,bmp,webp",
     "comentarios" => "required|min:50",

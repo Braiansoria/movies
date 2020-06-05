@@ -12,7 +12,7 @@
     <div class="jumbotron jumbotron-fluid text-center">
         <h1 class="display-4">{{$unaPelicula->title}}</h1>
         <div>
-        <img src="/storage/{{$unaPelicula->poster}}" alt="">
+        <img class="detalle" src="/storage/{{$unaPelicula->poster}}" alt="">
         </div>
         <h3> Detalle de la pelicula
             <p  class="text-justify descripcion" style="margin: 30px"> {{$unaPelicula->comentarios}}</p>
@@ -31,7 +31,7 @@
         </small>
         </li>
         @endforeach
-        */--->
+        */
         ?>
 
 
