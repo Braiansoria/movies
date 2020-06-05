@@ -63,14 +63,7 @@
                         <span  class="form-text text-danger">{{$errors->first('genero')}}</span>
                     </div>
 
-                  <div class="form-group">
-                    <label for="provincia">Actores</label>
-                        <select class="form-control {{ null!=$errors->first('actor') ? 'is-invalid' : '' }}" name="actor">
-                            <option value="">Eliege el actor</option>
-                            
-                            </select>
-                        <span  class="form-text text-danger">{{$errors->first('actor')}}</span>
-                    </div>
+                  
                     
                 <div style="padding: 15px">     
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar Pelicula</button>

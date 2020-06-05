@@ -56,7 +56,7 @@
                             </select>
                         <span  class="form-text text-danger">{{$errors->first('genero')}}</span>
                     </div>   
-                    actor    
+                        
                 <div class="form-group mb-3">
                     <label >Imagen</label>
                     <input type="file" name="poster" class="form-control" value ="{{old('poster',$unaPelicula->poster)}}" >

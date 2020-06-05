@@ -22,12 +22,19 @@
         @if ($unaPelicula->genero)
         <p>Genero:{{$unaPelicula->genero->name}}</p>
         @endif
-        @foreach ($unaPelicula->actores as $actor)
+
+         <!-- Actores -->
+         
+        <?php /*@foreach ($unaPelicula->actores as $actor)
         <small>
         <li>{{$actor->getNombreCompleto()}}
         </small>
         </li>
         @endforeach
+        */--->
+        ?>
+
+
        </td>
        <div>
          <button type="submit" class="btn btn-success"><a class="text-white" href="/editar/{{$unaPelicula->id}}">Editar</a>
